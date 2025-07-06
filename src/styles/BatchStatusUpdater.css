@@ -1,0 +1,11 @@
+.batch-updater-container {
+  margin-bottom: 1rem;
+}
+
+.batch-updater-container select {
+  margin-inline: 1cqw;
+}
+
+.batch-updater-container button {
+  /* margin-left: 1cqw; */
+}
