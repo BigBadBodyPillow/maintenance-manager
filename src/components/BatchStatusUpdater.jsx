@@ -1,8 +1,6 @@
 import '../styles/BatchStatusUpdater.css';
 
 export default function BatchStatusUpdater({
-  allSelected,
-  onSelectAll,
   batchStatus,
   onBatchStatusChange,
   onBatchUpdate,

@@ -34,7 +34,6 @@ function App() {
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify(job),
     });
-    // add to list
     const newJob = await response.json();
     setJobs((prev) => [...prev, newJob]);
   };
@@ -50,7 +49,6 @@ function App() {
   };
 
   // update job
-  // _id is for mongodb
   const handleUpdateJob = async (updatedJob) => {
     const response = await fetch(
       `http://localhost:4000/jobs/${updatedJob._id}`,
@@ -60,10 +58,8 @@ function App() {
         body: JSON.stringify(updatedJob),
       }
     );
-    // update
     const savedJob = await response.json();
     setJobs(jobs.map((job) => (job._id === savedJob._id ? savedJob : job)));
-    // close modal
     setEditingJob(null);
   };
 
@@ -145,11 +141,6 @@ function App() {
     setSelectedJobIds([]);
   };
 
-  // Filter jobs for display
-  // const visibleJobs = jobs.filter((job) =>
-  //   showArchived ? job.archived : !job.archived
-  // );
-
   //filter
   const visibleJobs = jobs
     .filter((job) => (showArchived ? job.archived : !job.archived))
@@ -170,7 +161,6 @@ function App() {
         <JobForm onAddJob={handleAddJob} />
         <hr />
         <h2>{showArchived ? 'Archived Jobs' : 'All Jobs'}</h2>
-        {/* Status Filter Dropdown */}
         <div className="filter-container">
           <label>
             Filter by Status {''}
@@ -210,6 +200,9 @@ function App() {
           onUnarchiveJob={handleUnarchiveJob}
           showArchived={showArchived}
         />
+
+        {/* modals seem pretty bad for accesiblity, or i might be doing it wrong */}
+
         {/* !! makes it a boolean but keeps its original value instead of being the oposite */}
         <Modal isOpen={!!editingJob} onClose={handleCloseModal}>
           <h2>Edit Job</h2>

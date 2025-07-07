@@ -1,6 +1,6 @@
 import '../styles/JobList.css';
 
-const statusOrder = { submitted: 1, 'in-progress': 2, completed: 3 };
+// const statusOrder = { submitted: 1, 'in-progress': 2, completed: 3 };
 
 export default function JobList({
   jobs,
@@ -11,16 +11,9 @@ export default function JobList({
   onUnarchiveJob,
   showArchived = false,
 }) {
-  const sortedJobs = [...jobs].sort((a, b) => {
-    if (statusOrder[a.status] !== statusOrder[b.status]) {
-      return statusOrder[a.status] - statusOrder[b.status];
-    }
-    return new Date(b.dateSubmitted) - new Date(a.dateSubmitted);
-  });
-
   return (
     <ul className="job-list">
-      {sortedJobs.map((job) => (
+      {jobs.map((job) => (
         <li className="Job" key={job._id}>
           <div className="description-checkbox-container">
             <input
@@ -44,8 +37,7 @@ export default function JobList({
             <div className="priority">
               <i>Priority: </i> {job.priority}
             </div>
-            {/* | Submitted:{' '}
-            {new Date(job.dateSubmitted).toLocaleString()} */}
+            {/* Submitted: {new Date(job.dateSubmitted).toLocaleString()} */}
             <br />
           </div>
           <div className="button-container">

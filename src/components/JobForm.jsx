@@ -37,8 +37,10 @@ export default function JobForm({
           onAddJob({
             ...values,
             status: 'submitted',
-            dateSubmitted: new Date().toISOString(),
-            id: Date.now(),
+
+            // i was using it but removed the date for simplicity and i didnt think it was necessary
+            // dateSubmitted: new Date().toISOString(),
+            // id: Date.now(),
           });
         }
         resetForm();
