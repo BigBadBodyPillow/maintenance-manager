@@ -20,7 +20,6 @@ function App() {
   const [showArchived, setShowArchived] = useState(false);
   const [statusFilter, setStatusFilter] = useState('all');
 
-  // fetch
   useEffect(() => {
     fetch('http://localhost:4000/jobs')
       .then((response) => response.json())
@@ -59,8 +58,13 @@ function App() {
       }
     );
     const savedJob = await response.json();
+
+    // update state
     setJobs(jobs.map((job) => (job._id === savedJob._id ? savedJob : job)));
-    setEditingJob(null);
+
+    //close modal
+    // setEditingJob(null);
+    handleCloseModal();
   };
 
   // archive
@@ -68,12 +72,12 @@ function App() {
     const jobToArchive = jobs.find((job) => job._id === jobId);
     if (!jobToArchive) return;
 
+    // change archived status to true
     const response = await fetch(`http://localhost:4000/jobs/${jobId}`, {
       method: 'PUT',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({ ...jobToArchive, archived: true }),
     });
-    // update job list
     const updatedJob = await response.json();
     setJobs(jobs.map((job) => (job._id === jobId ? updatedJob : job)));
     setSelectedJobIds(selectedJobIds.filter((id) => id !== jobId));
@@ -83,6 +87,8 @@ function App() {
   const handleUnarchiveJob = async (jobId) => {
     const jobToUnarchive = jobs.find((job) => job._id === jobId);
     if (!jobToUnarchive) return;
+
+    // reset archived status
     const response = await fetch(`http://localhost:4000/jobs/${jobId}`, {
       method: 'PUT',
       headers: { 'Content-Type': 'application/json' },
@@ -90,33 +96,42 @@ function App() {
     });
 
     const updatedJob = await response.json();
+
     setJobs(jobs.map((job) => (job._id === jobId ? updatedJob : job)));
   };
 
-  // Batch selection handlers
+  // Batch selection
   const handleSelectJob = (jobId) => {
     setSelectedJobIds(function (prev) {
-      return prev.includes(jobId)
-        ? prev.filter((id) => id !== jobId)
-        : [...prev, jobId];
+      if (prev.includes(jobId)) {
+        // Ifselected, remove it
+        return prev.filter(function (id) {
+          return id !== jobId;
+        });
+      } else {
+        //else add ti
+        return [...prev, jobId];
+      }
     });
+  };
+  // batgch status
+  const handleBatchStatusChange = (e) => {
+    setBatchStatus(e.target.value);
   };
 
   //select all
   const handleSelectAll = (checked) => {
+    // only visibible
     const visibleJobs = jobs.filter((job) =>
       showArchived ? job.archived : !job.archived
     );
     if (checked) {
+      // select all
       setSelectedJobIds(visibleJobs.map((job) => job._id));
     } else {
+      // clear
       setSelectedJobIds([]);
     }
-  };
-
-  // batgch status
-  const handleBatchStatusChange = (e) => {
-    setBatchStatus(e.target.value);
   };
 
   // batch update status in db

@@ -15,6 +15,7 @@ export default function JobList({
     <ul className="job-list">
       {jobs.map((job) => (
         <li className="Job" key={job._id}>
+          {/* name */}
           <div className="description-checkbox-container">
             <input
               type="checkbox"
@@ -25,6 +26,7 @@ export default function JobList({
               <strong>{job.description}</strong>
             </span>
           </div>
+          {/* detauils */}
           <div className="location-priority-status-container">
             <div className="location">
               <i>Location: </i> {job.location}
@@ -40,6 +42,7 @@ export default function JobList({
             {/* Submitted: {new Date(job.dateSubmitted).toLocaleString()} */}
             <br />
           </div>
+          {/* buttons */}
           <div className="button-container">
             <button onClick={() => onEditJob(job)}>Edit</button>
             {!showArchived ? (

@@ -1,5 +1,3 @@
-import '../styles/SelectAll.css';
-
 export default function SelectAll({ allSelected, onSelectAll }) {
   return (
     <label className="select-all">

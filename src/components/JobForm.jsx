@@ -9,6 +9,7 @@ export default function JobForm({
   isEditing,
 }) {
   return (
+    // https://formik.org/docs/overview
     <Formik
       enableReinitialize
       initialValues={{
@@ -39,6 +40,7 @@ export default function JobForm({
             status: 'submitted',
 
             // i was using it but removed the date for simplicity and i didnt think it was necessary
+            // ...(also layout wise i dont know where to put it)
             // dateSubmitted: new Date().toISOString(),
             // id: Date.now(),
           });
@@ -48,6 +50,7 @@ export default function JobForm({
     >
       {() => (
         <Form className="job-form">
+          {/* description */}
           <div>
             <label>Description</label>
             <Field name="description" placeholder="description" />
@@ -57,6 +60,7 @@ export default function JobForm({
               component="div"
             />
           </div>
+          {/* location */}
           <div>
             <label>Location</label>
             <Field name="location" placeholder="location" />
@@ -66,6 +70,7 @@ export default function JobForm({
               className="error-messssage"
             />
           </div>
+          {/* priority */}
           <div>
             <label>Priority</label>
             <Field as="select" name="priority">
@@ -74,6 +79,7 @@ export default function JobForm({
               <option>High</option>
             </Field>
           </div>
+          {/* for modal */}
           {isEditing && (
             <div>
               <label>Status:</label>

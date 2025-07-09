@@ -5,7 +5,7 @@ const jobSchema = new mongoose.Schema({
   location: String,
   priority: String,
   status: { type: String, default: 'submitted' },
-  dateSubmitted: { type: Date, default: Date.now },
+  // dateSubmitted: { type: Date, default: Date.now },
   archived: { type: Boolean, default: false },
 });
 
