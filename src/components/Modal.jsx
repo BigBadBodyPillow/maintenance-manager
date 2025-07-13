@@ -1,6 +1,5 @@
 import '../styles/Modal.css';
 
-// passing thr children instead of having to import the components here
 export default function Modal({ isOpen, onClose, children }) {
   if (!isOpen) return null;
   return (

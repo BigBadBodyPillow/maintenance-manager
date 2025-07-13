@@ -1,5 +1,3 @@
-import '../styles/Archive.css';
-
 export default function ArchiveToggle({ showArchived, onToggle }) {
   return (
     <label className="archive-toggle">

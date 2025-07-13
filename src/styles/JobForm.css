@@ -1,14 +1,7 @@
-.job-form {
-  /* background-color: red; */
-  /* max-width: 300px; */
-}
-
 .job-form div {
   display: flex;
   flex-direction: column;
   height: max-content;
-  /* align-items: center; */
-  /* justify-content: center; */
   margin-bottom: 1em;
   position: relative;
 }
@@ -27,14 +20,11 @@
   height: 4ch;
   box-sizing: border-box;
   margin-left: 0;
-  /* margin-bottom: 1em; */
-  /* margin-left: 1em; */
   padding-left: 1em;
 
   border-radius: 6px;
   border: 1px solid rgba(204, 204, 204, 0.2);
   background-color: rgb(21, 21, 21);
-  /* background-color: inherit; */
 }
 
 .job-form select {

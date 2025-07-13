@@ -172,7 +172,7 @@ function App() {
       <RainbowLine />
       <h1>Maintaiance Manager</h1>
       <main>
-        <h2>Submit a Job</h2>
+        <h2>Add a Job</h2>
         <JobForm onAddJob={handleAddJob} />
         <hr />
         <h2>{showArchived ? 'Archived Jobs' : 'All Jobs'}</h2>

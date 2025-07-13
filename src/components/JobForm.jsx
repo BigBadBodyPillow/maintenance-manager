@@ -79,7 +79,7 @@ export default function JobForm({
               <option>High</option>
             </Field>
           </div>
-          {/* for modal */}
+          {/* isEditing is for modal */}
           {isEditing && (
             <div>
               <label>Status:</label>
@@ -90,9 +90,7 @@ export default function JobForm({
               </Field>
             </div>
           )}
-          <button type="submit">
-            {isEditing ? 'Update Job' : 'Submit Job'}
-          </button>
+          <button type="submit">{isEditing ? 'Update Job' : 'Add Job'}</button>
         </Form>
       )}
     </Formik>

@@ -29,15 +29,15 @@ export default function JobList({
           {/* detauils */}
           <div className="location-priority-status-container">
             <div className="location">
-              <i>Location: </i> {job.location}
+              <span className="detail-lable">Location: </span> {job.location}
             </div>
             <br />
             <div className="status">
-              <i>Status: </i> {job.status}
+              <span className="detail-lable">Status: </span> {job.status}
             </div>
             <br />
             <div className="priority">
-              <i>Priority: </i> {job.priority}
+              <span className="detail-lable">Priority: </span> {job.priority}
             </div>
             {/* Submitted: {new Date(job.dateSubmitted).toLocaleString()} */}
             <br />
